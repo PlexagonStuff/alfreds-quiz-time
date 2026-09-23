@@ -1,0 +1,428 @@
+/* The house style: warm parchment, Oxford blue, brass, and straight-edged stationery. */
+:root{--ink:#17263c;--paper:#f5f0e4;--muted:#47566a;--violet:#234664;--purple:#476783;--pink:#93423d;--yellow:#c6a254;--mint:#477b69;--card:#fffdf7;--shadow:0 12px 30px rgba(23,38,60,.14)}
+body{font-family:Georgia,"Times New Roman",serif;background:radial-gradient(circle at 8% 0,#fffdf7 0,transparent 31rem),var(--paper);letter-spacing:.01em}.bg-orb{opacity:.09}.orb-one{background:#c6a254}.orb-two{background:#234664}.nav{border-bottom:1px solid #d8ccac}.brand,.art-logo,.hero h1,.page-head h1,.join-card h1,.pin,.question-display,.timer,.player-game .game-answer,.stat strong{font-family:Georgia,"Times New Roman",serif;letter-spacing:-.035em}.brand{font-variant:small-caps;letter-spacing:.04em;color:#17263c}.brand i{background:#c6a254;color:#17263c;border-radius:0;transform:none}.button{border:1px solid #102b43;border-radius:2px;background:#234664;color:#fffdf7;box-shadow:0 5px 0 #132b40;text-transform:uppercase;font-size:.75rem;letter-spacing:.09em}.button:hover{box-shadow:0 7px 0 #132b40}.button.light{color:#173956;background:#fffdf7;border-color:#c3ad72;box-shadow:0 5px 0 #d1c39c}.button.pink{background:#93423d;border-color:#6d2e2b;box-shadow:0 5px 0 #672b2b}.eyebrow{color:#725516;letter-spacing:.16em;font-weight:800}.hero h1{color:#10243a;text-wrap:balance}.hero h1 em{color:#234664}.hero p{color:#34465a;font-weight:600}.nav-links a:not(.button){color:#17263c;text-decoration-thickness:1px;text-underline-offset:.24em}.nav-links a:not(.button):hover{color:#6d352f}.hero-art,.lobby-card,.game-top,.player-game{background:#17263c}.hero-art{color:#fffdf7;border:1px solid #b69a5c;border-radius:3px;transform:none;box-shadow:.45rem .55rem 0 rgba(23,38,60,.18)}.art-top{color:#fffdf7;font-weight:700}.art-logo span,.pin{color:#e1c577}.art-question,.question-list,.editor,.join-card,.lobby-card,.game-card,.stat{border-radius:3px}.art-question{font-family:Georgia,serif;color:#17263c;background:#fffdf7;box-shadow:inset 0 0 0 1px #d8c99e}.answers-preview div{border:1px solid rgba(255,255,255,.38);text-shadow:0 1px 0 rgba(0,0,0,.35)}.question-list,.editor,.join-card,.game-card,.stat{border:1px solid #dfd4b8}.stat{color:#17263c;background:#fffdf7}.stat span{color:#47566a}.q-item{border-radius:2px;background:#f1ead9}.q-item.active{background:#e5d8b6;color:#234664}.q-number{border-radius:50%;color:#234664}.add-q{border-color:#bfae83;border-radius:2px;color:#234664}.text-input,.text-area,select{border-radius:2px;border-color:#d7cdb5;background:#fffdf7}.text-input:focus,.text-area:focus{border-color:#a58642}.question-image{border-radius:2px;border-color:#cbb98a;background:#fbf8ef}.answer,.game-answer{border-radius:2px}.ghost{border-radius:2px;background:#e9e1cd}.lobby-card{border:1px solid #b69a5c}.player-chip{border-radius:2px}.timer{background:#a34242;border:2px solid #e4cc89}.game-top{border-bottom:3px double #c6a254}.game-answer{font-family:Georgia,serif}.game-answer:nth-child(1){background:#9c3d43}.game-answer:nth-child(2){background:#315c83}.game-answer:nth-child(3){background:#b88e31}.game-answer:nth-child(4){background:#407561}.toast{background:#17263c;border:1px solid #c6a254;border-radius:2px}
+
+/* A deliberate centre stage for the host's portrait. */
+#landingAlfred,#hostAlfred,.host-alfred-slot{display:grid;place-items:center;width:100%;min-width:0}#landingAlfred .alfred,#hostAlfred .alfred,.host-alfred-slot .alfred{margin-inline:auto}#landingAlfred{position:absolute;z-index:3;inset:2.9rem 1.5rem 1.1rem auto;width:min(15rem,43%);align-content:end;pointer-events:none}#landingAlfred .alfred{pointer-events:auto;cursor:grab}#landingAlfred .alfred:active{cursor:grabbing}.hero-art:has(#landingAlfred){padding-right:min(17rem,46%)}.lobby-card:has(#hostAlfred){padding-top:1.8rem}.lobby-card #hostAlfred{margin:1rem auto .45rem}.game-card #hostAlfred,.alfred-game-context #hostAlfred{margin:1.25rem auto .5rem}#hostAlfred .alfred,.host-alfred-slot .alfred{width:clamp(10rem,23vw,16rem);padding:.65rem;background:#fffefa;border:1px solid #c9b47a;box-shadow:.3rem .35rem 0 #17263c}
+
+/* The reveal is a chart, not another set of answer tiles. */
+.results-chart{display:grid;grid-template-columns:1fr;gap:.75rem;padding:0 1.25rem 1.5rem}.results-chart .result-answer{display:grid;grid-template-columns:minmax(9rem,1fr) 4.5rem;gap:.75rem 1rem;align-items:center;min-height:0;padding:1rem 1.15rem .9rem;border:1px solid rgba(23,38,60,.28);border-radius:2px;color:#17263c;background:#fffdf7;box-shadow:inset .32rem 0 0 var(--answer-colour,#234664)}.results-chart .result-answer:nth-child(1){--answer-colour:#9c3d43}.results-chart .result-answer:nth-child(2){--answer-colour:#315c83}.results-chart .result-answer:nth-child(3){--answer-colour:#a47a1d}.results-chart .result-answer:nth-child(4){--answer-colour:#407561}.results-chart .result-answer>div:first-child{display:contents}.results-chart .result-answer span{grid-column:1;font-size:clamp(.95rem,2vw,1.14rem);line-height:1.25;text-align:left}.results-chart .result-answer strong{grid-column:2;grid-row:1;min-width:3.25rem;padding:.4rem .45rem;color:#17263c;background:#eee3c5;border:1px solid #c4a75a;font:700 1.12rem Georgia,serif;text-align:center}.results-chart .result-bar{grid-column:1/-1;grid-row:2;height:1rem;overflow:hidden;border:1px solid #b9aa83;background:repeating-linear-gradient(90deg,#ece4cf 0,#ece4cf calc(25% - 1px),#d4c8a8 calc(25% - 1px),#d4c8a8 25%)}.results-chart .result-bar i{display:block;min-width:0;height:100%;background:var(--answer-colour,#234664);box-shadow:inset -2px 0 rgba(255,255,255,.42);transition:width .65s cubic-bezier(.2,.8,.2,1)}.results-chart .result-answer.correct{outline:2px solid #b08a30;outline-offset:2px}.results-chart .result-answer.correct::after{content:"Correct answer";grid-column:1/-1;color:#634d13;font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+@media(max-width:780px){#landingAlfred{position:relative;inset:auto;width:100%;margin:1rem auto 0}.hero-art:has(#landingAlfred){padding-right:1.25rem}.results-chart .result-answer{grid-template-columns:minmax(0,1fr) 3.5rem}.results-chart .result-answer strong{min-width:0}}
+
+/* Keep the host's portrait in its own small, reserved piece of the screen.
+   It must never sit on top of a PIN, a player name, or a question. */
+.lobby-card.alfred-game-context{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) clamp(4.75rem,8vw,6.25rem);
+  grid-template-areas:
+    "eyebrow alfred"
+    "pin alfred"
+    "count alfred"
+    "players players"
+    "controls controls";
+  column-gap:1.1rem;
+  align-items:center;
+}
+.lobby-card.alfred-game-context > .host-alfred-slot#hostAlfred{
+  grid-area:alfred;
+  position:static;
+  display:block;
+  align-self:center;
+  justify-self:end;
+  width:clamp(4.75rem,8vw,6.25rem);
+  min-width:0;
+  padding:.25rem;
+  background:#fffefa;
+  border:1px solid #c9b47a;
+  box-shadow:.18rem .22rem 0 #17263c;
+}
+.lobby-card.alfred-game-context > .eyebrow{grid-area:eyebrow;color:#eadba9 !important;}
+.lobby-card.alfred-game-context > .pin{grid-area:pin;margin:.15rem 0;}
+.lobby-card.alfred-game-context > .player-count{grid-area:count;}
+.lobby-card.alfred-game-context > .players{grid-area:players;}
+.lobby-card.alfred-game-context > .lobby-controls{grid-area:controls;}
+.lobby-card.alfred-game-context #hostAlfred .alfred{width:100%;padding:0;border:0;background:transparent;box-shadow:none;}
+.lobby-card.alfred-game-context #hostAlfred .alfred__caption{display:none;}
+
+.game-card.alfred-game-context{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) clamp(4.75rem,8vw,6.25rem);
+  grid-template-areas:
+    "top alfred"
+    "question question"
+    "media media"
+    "answers answers";
+  align-items:stretch;
+}
+.game-card.alfred-game-context > .host-alfred-slot#hostAlfred{
+  grid-area:alfred;
+  position:static;
+  display:block;
+  align-self:center;
+  justify-self:end;
+  width:clamp(4.75rem,8vw,6.25rem);
+  min-width:0;
+  margin-right:1rem;
+  padding:.25rem;
+  background:#fffefa;
+  border:1px solid #c9b47a;
+  box-shadow:.18rem .22rem 0 #17263c;
+}
+.game-card.alfred-game-context > .game-top{grid-area:top;min-width:0;}
+.game-card.alfred-game-context > .question-display{grid-area:question;}
+.game-card.alfred-game-context > img{grid-area:media;}
+.game-card.alfred-game-context > .game-answers{grid-area:answers;}
+.game-card.alfred-game-context #hostAlfred .alfred{width:100%;padding:0;border:0;background:transparent;box-shadow:none;}
+.game-card.alfred-game-context #hostAlfred .alfred__caption{display:none;}
+
+/* The landing portrait gets enough room for both its face and its legible card. */
+.hero-art{padding:1.5rem;}
+.alfred-stage,#homeAlfred{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:17.25rem;
+  margin:1rem 0 .45rem;
+  padding:2rem 1rem .75rem;
+  overflow:hidden;
+}
+.alfred-stage .alfred,#homeAlfred .alfred{width:min(13.5rem,76%);margin:0;}
+.alfred-stage .alfred__caption,#homeAlfred .alfred__caption{
+  margin:.5rem auto 0;
+  padding:.42rem .55rem;
+  max-width:100%;
+  color:#17263c;
+  background:#fffefa;
+  border:1px solid #c9b47a;
+  box-shadow:.16rem .18rem 0 rgba(0,0,0,.18);
+  line-height:1.22;
+}
+.alfred-stage .alfred__caption strong,#homeAlfred .alfred__caption strong{color:#17263c;}
+.alfred-stage .alfred__caption span,#homeAlfred .alfred__caption span{color:#405165;}
+.hero .alfred-play-hint{color:#f3df9f;text-shadow:0 1px 0 #17263c;font:italic .82rem Georgia,serif;}
+
+/* Explicit ink and paper values protect button/caption contrast from inherited rules. */
+a.button,.button{color:#fffdf7 !important;text-shadow:0 1px 0 rgba(0,0,0,.32);}
+.button.light{color:#173956 !important;text-shadow:none;}
+.nav-links .button{background:#234664;color:#fffdf7 !important;}
+
+/* A classroom-style response graph: columns rise from one shared baseline. */
+.results-chart.results-chart--vertical{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:clamp(.55rem,2vw,1.4rem);
+  align-items:end;
+  min-height:20rem;
+  margin:0;
+  padding:1.25rem clamp(1rem,4vw,2.5rem) 1.5rem;
+  border-top:1px solid #d8ccac;
+  background:linear-gradient(#fffefa,#f5efdf);
+}
+.results-chart--vertical .result-column{
+  display:grid;
+  grid-template-rows:auto 14rem auto;
+  gap:.45rem;
+  min-width:0;
+  align-items:end;
+  text-align:center;
+}
+.results-chart--vertical .result-column__count{
+  min-height:1.4rem;
+  color:#17263c;
+  font:700 clamp(1rem,2.6vw,1.45rem) Georgia,serif;
+}
+.results-chart--vertical .result-column__plot{
+  position:relative;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  width:100%;
+  height:14rem;
+  border-bottom:3px solid #17263c;
+  background:repeating-linear-gradient(to top,transparent 0,transparent calc(25% - 1px),rgba(23,38,60,.12) calc(25% - 1px),rgba(23,38,60,.12) 25%);
+}
+.results-chart--vertical .result-column__bar{
+  display:block;
+  width:clamp(2.3rem,75%,5.75rem);
+  height:var(--bar-height,0%);
+  min-height:0;
+  border:1px solid rgba(23,38,60,.34);
+  box-shadow:inset 0 1px rgba(255,255,255,.38),.12rem 0 0 rgba(23,38,60,.14);
+  transform-origin:bottom;
+  transition:height .65s cubic-bezier(.2,.8,.2,1);
+}
+.results-chart--vertical .result-column:nth-child(1) .result-column__bar{background:#9c3d43;}
+.results-chart--vertical .result-column:nth-child(2) .result-column__bar{background:#315c83;}
+.results-chart--vertical .result-column:nth-child(3) .result-column__bar{background:#b88e31;}
+.results-chart--vertical .result-column:nth-child(4) .result-column__bar{background:#407561;}
+.results-chart--vertical .result-column.is-correct .result-column__bar{outline:3px solid #d2ac48;outline-offset:3px;}
+.results-chart--vertical .result-column__label{
+  min-height:2.5em;
+  overflow-wrap:anywhere;
+  color:#17263c;
+  font-size:clamp(.78rem,1.6vw,1rem);
+  font-weight:700;
+  line-height:1.18;
+}
+.results-chart--vertical .result-column__label b{display:block;margin-bottom:.18rem;color:#725516;font-size:1rem;}
+.results-chart--vertical .result-column__label small{display:block;margin-top:.22rem;color:#725516;font-size:.67rem;letter-spacing:.07em;text-transform:uppercase;}
+
+@media(max-width:780px){
+  .lobby-card.alfred-game-context{grid-template-columns:minmax(0,1fr) 4.5rem;column-gap:.6rem;padding:1.35rem 1rem;}
+  .lobby-card.alfred-game-context > .host-alfred-slot#hostAlfred,
+  .game-card.alfred-game-context > .host-alfred-slot#hostAlfred{width:4.2rem;}
+  .game-card.alfred-game-context{grid-template-columns:minmax(0,1fr) 4.5rem;}
+  .game-card.alfred-game-context > .host-alfred-slot#hostAlfred{margin-right:.55rem;}
+  .alfred-stage,#homeAlfred{min-height:15.5rem;padding-top:1.7rem;}
+  .results-chart.results-chart--vertical{gap:.4rem;min-height:17.25rem;padding:.85rem .7rem 1rem;}
+  .results-chart--vertical .result-column{grid-template-rows:auto 11rem auto;gap:.35rem;}
+  .results-chart--vertical .result-column__plot{height:11rem;}
+  .results-chart--vertical .result-column__bar{width:82%;}
+}
+
+/* During a live host round ALFRED gets his own lectern.  Keeping this as the
+   first full-width row means that he never borrows space from the timer,
+   question, image, or answers beneath him. */
+.game-card.alfred-game-context{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  grid-template-areas:
+    "alfred"
+    "top"
+    "question"
+    "media"
+    "answers";
+  overflow:visible;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+}
+.game-card.alfred-game-context > .host-alfred-slot#hostAlfred{
+  grid-area:alfred;
+  position:relative;
+  display:grid;
+  place-items:center;
+  width:100%;
+  min-height:clamp(17.5rem,31vw,23rem);
+  margin:0;
+  padding:1.65rem 1.5rem 1.2rem;
+  overflow:hidden;
+  background:linear-gradient(135deg,#10243a 0%,#1d3955 62%,#234664 100%);
+  border:1px solid #b69a5c;
+  box-shadow:.45rem .5rem 0 rgba(23,38,60,.18),inset 0 0 0 .32rem #d6c087;
+}
+.game-card.alfred-game-context > .host-alfred-slot#hostAlfred::before{
+  content:"ALFRED · YOUR QUIZMASTER";
+  position:absolute;
+  top:.82rem;
+  left:1rem;
+  right:1rem;
+  color:#f1dda1;
+  font:700 clamp(.62rem,1.2vw,.76rem) Georgia,"Times New Roman",serif;
+  letter-spacing:.2em;
+  text-align:center;
+}
+.game-card.alfred-game-context > .host-alfred-slot#hostAlfred::after{
+  content:"";
+  position:absolute;
+  z-index:0;
+  bottom:-6.25rem;
+  width:clamp(20rem,46vw,31rem);
+  height:10rem;
+  border-radius:50% 50% 0 0;
+  background:#b18b36;
+  opacity:.52;
+}
+.game-card.alfred-game-context #hostAlfred .alfred{
+  position:relative;
+  z-index:1;
+  width:clamp(13.5rem,25vw,18.5rem);
+  margin:0;
+  padding:.7rem;
+  background:#fffefa;
+  border:1px solid #c9b47a;
+  box-shadow:.35rem .42rem 0 #0f2033;
+}
+.game-card.alfred-game-context #hostAlfred .alfred__caption{
+  display:grid;
+  margin:.52rem 0 0;
+  color:#17263c;
+}
+.game-card.alfred-game-context #hostAlfred .alfred__caption strong{color:#17263c;}
+.game-card.alfred-game-context #hostAlfred .alfred__caption span{color:#405165;}
+.game-card.alfred-game-context > .game-top,
+.game-card.alfred-game-context > .question-display,
+.game-card.alfred-game-context > img,
+.game-card.alfred-game-context > .game-answers{
+  background:#fffdf7;
+}
+.game-card.alfred-game-context > .game-top{
+  border:1px solid #dfd4b8;
+  border-bottom:3px double #c6a254;
+}
+.game-card.alfred-game-context > .question-display{border-inline:1px solid #dfd4b8;}
+.game-card.alfred-game-context > img{box-sizing:border-box;max-width:100% !important;}
+.game-card.alfred-game-context > .game-answers{
+  border:1px solid #dfd4b8;
+  border-top:0;
+  border-radius:0 0 3px 3px;
+}
+
+@media(max-width:780px){
+  .game-card.alfred-game-context > .host-alfred-slot#hostAlfred{
+    min-height:16.5rem;
+    padding:1.65rem .8rem 1rem;
+    box-shadow:.25rem .32rem 0 rgba(23,38,60,.18),inset 0 0 0 .24rem #d6c087;
+  }
+  .game-card.alfred-game-context #hostAlfred .alfred{width:clamp(12rem,63vw,15.5rem);}
+  .game-card.alfred-game-context > .host-alfred-slot#hostAlfred::after{bottom:-6.8rem;width:25rem;}
+}
+
+/* ALFRED belongs at the front of the room, not inside the question paper.
+   On roomy host displays he gets an independent, fixed dock at the right edge;
+   the quiz card is simply allowed the remaining width.  Smaller screens omit
+   the dock completely so neither questions nor choices are obscured. */
+@media(min-width:721px){
+  .game-card.alfred-game-context{
+    width:min(58.75rem,calc(100vw - 12.5rem));
+    max-width:calc(100vw - 12.5rem);
+    margin-inline:auto;
+  }
+  .game-card.alfred-game-context > .host-alfred-slot#hostAlfred{
+    position:fixed;
+    z-index:20;
+    top:50%;
+    right:.65rem;
+    width:clamp(8.25rem,13vw,14.5rem);
+    min-height:0;
+    margin:0;
+    padding:1.3rem .85rem 1rem;
+    transform:translateY(-50%);
+    overflow:hidden;
+    border:1px solid #b69a5c;
+    background:linear-gradient(135deg,#10243a 0%,#1d3955 62%,#234664 100%);
+    box-shadow:.38rem .46rem 0 rgba(23,38,60,.22),inset 0 0 0 .25rem #d6c087;
+  }
+  .game-card.alfred-game-context > .host-alfred-slot#hostAlfred::before{top:.55rem;}
+  .game-card.alfred-game-context > .host-alfred-slot#hostAlfred::after{bottom:-7rem;width:22rem;height:9rem;}
+  .game-card.alfred-game-context #hostAlfred .alfred{width:100%;padding:.5rem;}
+}
+@media(max-width:720px){
+  .game-card.alfred-game-context > .host-alfred-slot#hostAlfred{display:none;}
+}
+
+/* Shared alignment keeps the host's answer blocks and graph labels on one
+   clean baseline regardless of answer length. */
+.game-card.alfred-game-context > .game-answers .game-answer{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+.results-chart--vertical .result-column__count,
+.results-chart--vertical .result-column__label{text-align:center;}
+
+/* The quiz title is a small brass-labelled line in the workshop, like a card
+   filed neatly in a butler's study. */
+.quiz-title-control{display:block;width:min(30rem,100%);margin-top:1rem}
+.quiz-title-control .field-label{margin:0 0 .4rem;color:#725516}
+.quiz-title-control .text-input{font:700 1.15rem Georgia,"Times New Roman",serif;color:#17263c;border-color:#bfae83;box-shadow:inset .18rem 0 #e1d1a1}
+.quiz-title-control .text-input::placeholder{color:#697382;font-weight:400;font-style:italic}
+
+/* Host lectern: this is deliberately a viewport dock, never a column inside
+   the PIN or question card.  The card gets a narrower reading area so the
+   portrait cannot cover classroom information. */
+@media (min-width:721px){
+  .lobby{
+    width:min(57.5rem,calc(100vw - 18rem));
+    max-width:calc(100vw - 18rem);
+    margin-inline:auto;
+  }
+  .lobby-card.alfred-game-context{
+    display:block;
+    padding:2.45rem 2rem;
+  }
+  .lobby-card.alfred-game-context > .host-alfred-slot#hostAlfred{
+    position:fixed;
+    z-index:40;
+    top:50%;
+    right:.75rem;
+    display:block;
+    width:clamp(8.75rem,13vw,14.5rem);
+    min-height:0;
+    margin:0;
+    padding:1.25rem .8rem .9rem;
+    transform:translateY(-50%);
+    overflow:hidden;
+    background:linear-gradient(135deg,#10243a 0%,#1d3955 62%,#234664 100%);
+    border:1px solid #b69a5c;
+    box-shadow:.38rem .46rem 0 rgba(23,38,60,.22),inset 0 0 0 .25rem #d6c087;
+  }
+  .lobby-card.alfred-game-context > .host-alfred-slot#hostAlfred::before{
+    content:"ALFRED · QUIZMASTER";
+    display:block;
+    margin:0 0 .55rem;
+    color:#f1dda1;
+    font:700 .62rem Georgia,"Times New Roman",serif;
+    letter-spacing:.16em;
+    text-align:center;
+  }
+  .lobby-card.alfred-game-context #hostAlfred .alfred{
+    width:100%;
+    margin:0;
+    padding:.45rem;
+    background:#fffefa;
+    border:1px solid #c9b47a;
+    box-shadow:.2rem .24rem 0 #0f2033;
+  }
+  .game-card.alfred-game-context{
+    width:min(58.75rem,calc(100vw - 18rem));
+    max-width:calc(100vw - 18rem);
+  }
+}
+
+/* Give every response its own identically sized plinth.  Variable-length
+   answer labels cannot move the graph bars or counts off their shared axis. */
+.results-summary{
+  width:max-content;
+  max-width:calc(100% - 2rem);
+  margin:1.15rem auto .3rem;
+  padding:.45rem 1.1rem;
+  color:#725516;
+  background:#f5ead0;
+  border-block:1px solid #c9ae66;
+  font:700 .86rem Georgia,"Times New Roman",serif;
+  letter-spacing:.1em;
+  text-align:center;
+  text-transform:uppercase;
+}
+.results-chart--vertical .result-column{
+  grid-template-rows:2rem 14rem 5.25rem;
+  align-items:center;
+}
+.results-chart--vertical .result-column__count{
+  display:grid;
+  place-items:center;
+  width:100%;
+  height:2rem;
+  min-height:0;
+  padding:.14rem .35rem;
+  background:#f5ead0;
+  border:1px solid #c9ae66;
+  font-variant-numeric:tabular-nums;
+}
+.results-chart--vertical .result-column__plot{align-self:end;}
+.results-chart--vertical .result-column__label{
+  display:grid;
+  place-content:start center;
+  width:100%;
+  height:5.25rem;
+  min-height:0;
+  padding:.35rem .2rem 0;
+  text-align:center;
+}
+@media (max-width:720px){
+  .lobby-card.alfred-game-context > .host-alfred-slot#hostAlfred{display:none;}
+  .results-chart--vertical .result-column{grid-template-rows:2rem 11rem 5.5rem;}
+  .results-chart--vertical .result-column__label{height:5.5rem;font-size:.74rem;}
+}

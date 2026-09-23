@@ -1,0 +1,27 @@
+.host-phase-actions { padding: 0 20px 25px; text-align: center; }
+.leaderboard-list { list-style: none; margin: 0; padding: 0 20px 24px; }
+.leaderboard-list li { display: grid; grid-template-columns: 55px 1fr auto; align-items: center; gap: 12px; padding: 15px 16px; margin: 8px 0; border-radius: 13px; background: #f4f2ff; font-weight: 700; animation: pop .3s both; }
+.leaderboard-list li b { color: #6c4cff; font: 700 20px "Space Grotesk"; }
+.leaderboard-list li strong { font: 700 18px "Space Grotesk"; }
+.player-reveal { box-shadow: none; }
+.player-reveal .game-answer { min-height: 72px; }
+.winner-podium { display: flex; justify-content: center; align-items: end; gap: 12px; padding: 20px; background: #f3ead2; }
+.podium-place { display: grid; place-items: center; gap: 5px; min-width: 120px; padding: 16px 10px; color: #17263c; background: #d7c49b; font-weight: 700; text-align: center; }
+.podium-place--1 { order: 2; min-height: 170px; background: #c6a254; }
+.podium-place--2 { order: 1; min-height: 130px; }
+.podium-place--3 { order: 3; min-height: 105px; background: #b78f77; }
+.podium-place__medal { font-size: 30px; }
+.podium-place small { font-weight: 600; }
+#homeAlfred { display: grid; place-items: center; min-height: 250px; margin: 18px auto 0; }
+#homeAlfred .alfred { margin: 0 auto; }
+#homeAlfred .alfred__face { cursor: grab; }
+#homeAlfred .alfred__face:active { cursor: grabbing; }
+.leaderboard-heading { display: flex; align-items: center; justify-content: center; gap: 18px; padding: 12px 24px 0; }
+.leaderboard-heading > div:first-child { max-width: 520px; }
+.leaderboard-heading .question-display { padding: 18px 0 4px; }
+.leaderboard-heading p { margin: 0 0 14px; color: #777391; text-align: center; font-weight: 700; }
+#leaderboardAlfred { position: relative; min-width: min(13rem, 35vw); padding: .75rem; border-radius: 1.5rem; background: linear-gradient(145deg, #fff, #f0ebff); box-shadow: 0 1.1rem 2.6rem #17133d2e; }
+#leaderboardAlfred .alfred { width: clamp(9.75rem, 19vw, 14.5rem); }
+#app { font-size: 0; }
+#app > * { font-size: initial; }
+@media (max-width: 780px) { .leaderboard-list { padding: 0 13px 20px; } .leaderboard-list li { grid-template-columns: 43px 1fr auto; } .leaderboard-heading { flex-direction: column; padding-top: 6px; } #leaderboardAlfred { min-width: 0; } }
