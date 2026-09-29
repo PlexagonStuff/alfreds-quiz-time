@@ -25,23 +25,49 @@ const ROUND_COUNTDOWN_MS = 3000;
 const INTRODUCTION_MS = 8500;
 const REVEAL_MS = 3500;
 const LEADERBOARD_MS = 6500;
+// Builder exports include their question images as data URLs.  Socket.IO's
+// default incoming-message ceiling is only 1 MB, which rejects otherwise
+// valid image-rich quizzes before `host:create-game` is invoked.
+const MAX_QUIZ_PAYLOAD_BYTES = 20 * 1024 * 1024;
+const MAX_SOCKET_MESSAGE_BYTES = 25 * 1024 * 1024;
+const MAX_IMAGE_BYTES = MAX_QUIZ_PAYLOAD_BYTES;
 const games = new Map();
 
 const app = express();
-app.use(express.json({ limit: '5mb' }));
+app.use(express.json({ limit: `${MAX_SOCKET_MESSAGE_BYTES}b` }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/health', (_req, res) => res.status(200).json({ ok: true, games: games.size }));
 app.get('*', (_req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
 
 const server = http.createServer(app);
-const io = new Server(server, { cors: { origin: true, methods: ['GET', 'POST'] } });
+const io = new Server(server, {
+  cors: { origin: true, methods: ['GET', 'POST'] },
+  maxHttpBufferSize: MAX_SOCKET_MESSAGE_BYTES
+});
 
 function cleanText(value, maxLength) {
   return typeof value === 'string' ? value.trim().slice(0, maxLength) : '';
 }
 
+function cleanImage(value, questionNumber, errors) {
+  if (typeof value !== 'string') return '';
+  const image = value.trim();
+  if (!image) return '';
+  const bytes = Buffer.byteLength(image, 'utf8');
+  if (bytes > MAX_IMAGE_BYTES) {
+    errors.push(`Question ${questionNumber} has an image larger than 20 MB.`);
+    return '';
+  }
+  return image;
+}
+
 function validateQuiz(input) {
   const errors = [];
+  // Keep accepted quizzes comfortably below the transport ceiling.  Rejecting
+  // oversize input is deliberate: truncating a base64 data URL corrupts it.
+  if (Buffer.byteLength(JSON.stringify(input ?? {}), 'utf8') > MAX_QUIZ_PAYLOAD_BYTES) {
+    errors.push('This quiz is larger than 20 MB. Reduce or compress its images and try again.');
+  }
   const rawQuestions = Array.isArray(input?.questions) ? input.questions : [];
   if (!rawQuestions.length) errors.push('A quiz needs at least one question.');
   const questions = rawQuestions.map((raw, questionIndex) => {
@@ -56,7 +82,13 @@ function validateQuiz(input) {
     if (!Number.isFinite(timeLimit) || timeLimit < 5 || timeLimit > 300) errors.push(`Question ${questionIndex + 1} needs a time limit from 5 to 300 seconds.`);
     if (answers.length < 2) errors.push(`Question ${questionIndex + 1} needs at least two answers.`);
     if (!answers.some((answer) => answer.correct)) errors.push(`Question ${questionIndex + 1} needs a correct answer.`);
-    return { id: `q${questionIndex + 1}`, title, image: cleanText(raw?.image, 2_000_000), timeLimit: Math.round(timeLimit), answers };
+    return {
+      id: `q${questionIndex + 1}`,
+      title,
+      image: cleanImage(raw?.image, questionIndex + 1, errors),
+      timeLimit: Math.round(timeLimit),
+      answers
+    };
   });
   return { valid: errors.length === 0, errors, quiz: { title: cleanText(input?.title, 200) || 'Untitled quiz', questions } };
 }

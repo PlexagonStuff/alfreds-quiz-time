@@ -1,6 +1,7 @@
 .host-phase-actions { padding: 0 20px 25px; text-align: center; }
 .leaderboard-list { list-style: none; margin: 0; padding: 0 20px 24px; }
-.leaderboard-list li { display: grid; grid-template-columns: 55px 1fr auto; align-items: center; gap: 12px; padding: 15px 16px; margin: 8px 0; border-radius: 13px; background: #f4f2ff; font-weight: 700; animation: pop .3s both; }
+.leaderboard-list li { display: grid; grid-template-columns: 55px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 15px 16px; margin: 8px 0; border-radius: 13px; background: #f4f2ff; font-weight: 700; animation: pop .3s both; }
+.leaderboard-list li span { min-width: 0; overflow-wrap: anywhere; word-break: break-word; hyphens: auto; }
 .leaderboard-list li b { color: #6c4cff; font: 700 20px "Space Grotesk"; }
 .leaderboard-list li strong { font: 700 18px "Space Grotesk"; }
 .player-reveal { box-shadow: none; }
@@ -24,4 +25,4 @@
 #leaderboardAlfred .alfred { width: clamp(9.75rem, 19vw, 14.5rem); }
 #app { font-size: 0; }
 #app > * { font-size: initial; }
-@media (max-width: 780px) { .leaderboard-list { padding: 0 13px 20px; } .leaderboard-list li { grid-template-columns: 43px 1fr auto; } .leaderboard-heading { flex-direction: column; padding-top: 6px; } #leaderboardAlfred { min-width: 0; } }
+@media (max-width: 780px) { .leaderboard-list { padding: 0 13px 20px; } .leaderboard-list li { grid-template-columns: 43px minmax(0, 1fr) auto; } .leaderboard-heading { flex-direction: column; padding-top: 6px; } #leaderboardAlfred { min-width: 0; } }

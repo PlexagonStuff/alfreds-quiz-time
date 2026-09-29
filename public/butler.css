@@ -426,3 +426,78 @@ a.button,.button{color:#fffdf7 !important;text-shadow:0 1px 0 rgba(0,0,0,.32);}
   .results-chart--vertical .result-column{grid-template-rows:2rem 11rem 5.5rem;}
   .results-chart--vertical .result-column__label{height:5.5rem;font-size:.74rem;}
 }
+
+/* Quiz content is supplied by players, so it must be allowed to wrap rather
+   than forcing a fixed-height card or a horizontal overflow. */
+.question-display,
+.game-answer,
+.game-top > div:first-child,
+.results-summary,
+.results-chart--vertical .result-column__label,
+.results-chart--vertical .result-column__label span{
+  min-width:0;
+  overflow-wrap:anywhere;
+  word-break:break-word;
+  hyphens:auto;
+}
+.question-display{text-wrap:pretty;}
+.game-answers > .game-answer{min-width:0;white-space:normal;line-height:1.25;}
+.game-card.alfred-game-context > .game-answers .game-answer{min-height:6.25rem;}
+.results-chart--vertical .result-column__label{
+  height:auto;
+  min-height:5.25rem;
+  align-content:start;
+}
+
+/* Four result labels remain readable on phones: rows preserve every character
+   instead of squeezing a long answer into a narrow chart column. */
+@media(max-width:520px){
+  .game-top{gap:.75rem;padding:1rem;}
+  .game-top > div:first-child{font-size:.92rem;}
+  .timer{flex:0 0 3rem;width:3rem;height:3rem;font-size:1.25rem;}
+  .question-display{font-size:clamp(1.45rem,7vw,2rem);letter-spacing:-.025em;}
+  .game-answers{padding-inline:.75rem;}
+  .game-card.alfred-game-context > .game-answers .game-answer,
+  .player-game .game-answer{min-height:0;padding:1rem;font-size:clamp(1rem,5vw,1.35rem);}
+  .results-chart.results-chart--vertical{display:block;padding:.8rem;}
+  .results-chart--vertical .result-column{
+    display:grid;
+    grid-template-columns:2.25rem minmax(0,1fr) auto;
+    grid-template-rows:auto .8rem;
+    column-gap:.65rem;
+    row-gap:.35rem;
+    align-items:center;
+    padding:.7rem 0;
+    border-bottom:1px solid #d8ccac;
+    text-align:left;
+  }
+  .results-chart--vertical .result-column__count{
+    grid-column:3;
+    grid-row:1;
+    width:auto;
+    height:auto;
+    min-width:2rem;
+    padding:.15rem .3rem;
+  }
+  .results-chart--vertical .result-column__plot{
+    grid-column:1/-1;
+    grid-row:2;
+    width:100%;
+    height:.8rem;
+    border:1px solid rgba(23,38,60,.26);
+    background:#e9dfc7;
+  }
+  .results-chart--vertical .result-column__bar{width:var(--bar-height,0%);height:100%;}
+  .results-chart--vertical .result-column__label{
+    grid-column:1/3;
+    grid-row:1;
+    display:block;
+    min-height:0;
+    padding:0;
+    font-size:.9rem;
+    text-align:left;
+  }
+  .results-chart--vertical .result-column__label b{display:inline;margin:0 .35rem 0 0;}
+  .results-chart--vertical .result-column__label span{display:inline;}
+  .results-chart--vertical .result-column__label small{margin-left:.35rem;}
+}
